@@ -5,6 +5,7 @@
 \usepackage[spanish,activeacute]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{enumerate}
+\usepackage{ dsfont }
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{hyperref}
@@ -53,7 +54,7 @@ A\'alisis N\'umerico\par}
 \end{center}
 
 \vspace{0.5cm }
-En este documento veremoszs y analisaremos el m\'etodo de m\'inimos cuadrados baho diferentes perspectivas y como 
+En este documento veremos y analizaremos el m\'etodo de m\'inimos cuadrados bajo diferentes perspectivas y como 
 \vspace{0.5cm}
 
 
@@ -63,7 +64,10 @@ En este documento veremoszs y analisaremos el m\'etodo de m\'inimos cuadrados ba
 
 
 
-\section{Teor\'ia}
+\begin{center}
+    \section{Teor\'ia}
+
+\end{center}
 \vspace{1.5cm}
 
 
@@ -71,7 +75,7 @@ En este documento veremoszs y analisaremos el m\'etodo de m\'inimos cuadrados ba
 
 Al enfrentarnos al siguiente problema $Ax=b$ donde $A\in\mathbb{R}^{mxn}$ y  conocemos el vector de datos $b$, el m\'etodo de min\'imos cuadrados ofrece una forma de minimizaci\'on del vector residual $r=b-Ax$ minimizando la norma al cuadrado del vector residual $\langle r,r \rangle$.
 
-Esta forma de optimizar el error es atractiva por varias razones una de ellas es que a funci\'on de $||.||^2$ es una funci\'on suave.
+Esta forma de optimizar el error es atractiva por varias razones; una de ellas es que a funci\'on de $||.||^2$ es una funci\'on suave.
 
 Entonces es f\'acil ver que dados los datos este m\'etodo de una manera muy eficaz nos da la "mejor aproximaci\'on" posible para todos los puntos a la cual llamaremos modelo
 \vspace{0.7cm}
@@ -83,23 +87,21 @@ Entonces es f\'acil ver que dados los datos este m\'etodo de una manera muy efic
     \section{Perspectiva Geom\'etrica}
 \end{center}
 \vspace{0.7cm}
-Una manera interesante de ver el m\'etodo de m\'nimos cuadrados es notar que la soluci\'on de este problema se deja ver como como la proyeccci\'on  de $b$ en el espacio columna de $A$.\\
+Una manera interesante de ver el m\'etodo de m\'nimos cuadrados es notar que la soluci\'on de este problema se deja ver como la proyeccci\'on  de $b$ en el espacio columna de $A$.\\
 
-Ahora cuando el sistema $Ax=b$(donde $b$ es el vector dado por los datos) no tiene una soluci\'on exacta es decir que $b\notin col(A)$ y buscamos su mejor aproximaci\'on
-utilizamos el m\'etodo de m\'inimos, cuadrados donde
-minimizaremos el vector residual $r=b-Ax$.\\
+Ahora cuando el sistema $Ax=b$(donde $b$ es el vector dado por los datos) no tiene una soluci\'on exacta, es decir que $b\notin col(A)$ y buscamos su mejor aproximaci\'on, utilizamos el m\'etodo de m\'inimos, cuadrados para minimizar el vector residual $r=b-Ax$.\\
 
-Ahora si tomamos el vector $\overline{b}\in col(A)$ como el vector m\'as cercano a $b$ en el subespacio $col(A)$  tendriamos que $\overline{b}$ es una buena aproxicimaci\'on que soluciona nuestro sistema, este vector $\overline{b}$ podemos mostrar que se deja ver como la proyecci\'on  de $b$ en el subespacio $col(A)$  tal que cumple lo siguiente 
+Ahora si tomamos el vector $\overline{b}\in col(A)$ como el vector m\'as cercano a $b$ en el subespacio $col(A)$ tendr\'iamos que $\overline{b}$ es una buena aproximaci\'on que soluciona nuestro sistema, este vector $\overline{b}$ podemos mostrar que se deja ver como la proyecci\'on  de $b$ en el subespacio $col(A)$  tal que cumple lo siguiente 
 
 \[
 \min_{x \in \text{col}(A)} \| b - x \|
 \]
 
-Note que si $\overline{b}=Ax$ por lo tanto $r=b-\overline{b}$ luego por definicion de la proyecci\'on  se sigue que $r$ es ortogonal a $col(A)$ es decir que $A^\top r=0$ 
+Note que si $\overline{b}=Ax$ por lo tanto $r=b-\overline{b}$ luego por definición de la proyecci\'on  se sigue que $r$ es ortogonal a $col(A)$ es decir que $A^\top r=0$ 
 
-asumimos la ortogonalidad de $r$ pues si $r$ no fuera ortogonal a $\overline{b}$ esto significar\'ia que existe una mejor aproximaci\'on en $col(A)$ para $b$ por lo tanto no cumplir\'ia la condici\'on de minimizaci\'on y la proyecci\'on se deducir\'ia  de este hecho.
+Asumimos la ortogonalidad de $r$ pues si $r$ no fuera ortogonal a $\overline{b}$ esto significar\'ia que existe una mejor aproximaci\'on en $col(A)$ para $b$ por lo tanto no cumplir\'ia la condici\'on de minimizaci\'on y la proyecci\'on se deducir\'ia  de este hecho.
 
-As\'i tendr\'iamos que $\overline{b}=Ax$, por definici\'on tendr\'iamos que $r=b-\overline{b}$es decir que $b=r+\overline{b}$, si aplicaramos la propiedad del triangulo esto se ver\'ia de la siguiente manera.
+As\'i tendr\'iamos que $\overline{b}=Ax$, por definici\'on tendr\'iamos que $r=b-\overline{b}$es decir que $b=r+\overline{b}$, si aplicáramos la propiedad del triángulo esto se ver\'ia de la siguiente manera.
 
 
 \vspace{0.5cm}
@@ -117,24 +119,24 @@ As\'i tendr\'iamos que $\overline{b}=Ax$, por definici\'on tendr\'iamos que $r=b
 \section{Perspectiva Algebraica}
 \end{center}
 
- La ecuaci\'on normal del metodo de minimos cuadrados se obtiene de minimizar la suma de los vectores resuiduo al cuadrado.
+ La ecuaci\'on normal del método de mínimos cuadrados se obtiene de minimizar la suma de los vectores residuo al cuadrado.
 
  Supongamos que $Ax=\overline{b}$ define el modelo para nuestra regresi\'on lineal.
 
- Ahora nuestro objetivo es minimizar la norma vectores residuo al cuadradola cual llamaremos  $S(x)$ donde
+ Ahora nuestro objetivo es minimizar el cuadrado de la norma del residual,que  llamaremos  $S(x)$. Así:
 
  \begin{align*}
-     S(x)=\langle r,r\rangle\\
-     =(b-\overline{b})alaT(b-\overline{b})\\
-     =(b-Ax)alaT(b-Ax)\\  
-     =b^\top b - b^\top Ax - x^\top A^\top b + x^\top A^\top A x\\
-     =b^\top b - 2 x^\top A^\top b + x^\top A^\top A x
+     S(x)&=\langle r,r\rangle\\
+     &=(b-\overline{b})^T(b-\overline{b})\\
+     &=(b-Ax)^T(b-Ax)\\  
+     &=b^\top b - b^\top Ax - x^\top A^\top b + x^\top A^\top A x\\
+     &=b^\top b - 2 x^\top A^\top b + x^\top A^\top A x
  \end{align*}
 Ahora minimicemos $S(x)$
 
 \begin{align*}
-    \frac{\partial S(x)}{\partial x} = -2A^\top b + 2A^\top Ax=0\\
-    A^\top Ax = A^\top b
+    \frac{\partial S(x)}{\partial x} = -2A^\top b + 2A^\top Ax&=0\\
+  \iff  A^\top Ax& = A^\top b
 \end{align*}
 
 Ahora suponiendo que $A^\top A$ es invertible tendr\'iamos que
@@ -145,19 +147,52 @@ Ahora suponiendo que $A^\top A$ es invertible tendr\'iamos que
  
 A la ecuaci\'on $(1)$ la llamaremos la ecuaci\'on normal del m\'etodo de mi\'imos cuadrados
 
+
 \begin{center}
-\section{Conclusiones}\end{center}
+    \section{Perspectiva de Data Science}
+\end{center}
+Uno de los usos más importantes de mínimos cuadrados es hacer regresiones.\\ Dado un conjunto de datos $(x_1,y_i)_{i=1}^n \in \mathds{R}^2$, podemos tratar de modelar funciones que describan aproximadamente el comportamiento de estos datos.\\ Ya vimos una estrategia en el curso de hacer interpolación con polinomios o splines, encontrando funciones $f(x)$ que cumplan que $f(x_i) = y_i \quad \forall i$ y sean bien comportadas en ciertos sentidos. A pesar de que el hecho de que interpolen pueda ser deseable en algunos contextos, esta idea puede llegar  a tener problemas. Por ejemplo, al usar interpolación de Lagrange o de Hermite, si se tiene una cantidad considerable de datos, por la naturaleza oscilante de los polinomios de grado alto, se puede llegar a tener problemas numéricos y funciones de predicción feas. Además, se suelen tener que definir en un intervalo muy cercano alrededor de cada dato, pues su comportamiento lejos de ellos puede ser impredecible,y al tratar de interpolar funciones acotadas, esta interpolación solo es buena en un intervalo, pues al usar polinomios, que crecen o decrecen tanto como se quiera alejándose del origen, eventualmente sus valores crecen o decrecen demasiado como para seguir siendo aproximaciones válidas.\\
+Sin embargo, con una regresión, podemos encontrar más bien funciones que se acerquen a estos puntos dados y sean las "mejores" que lo hagan en el sentido de que minimicen la suma de los cuadrados de las distancias entre los puntos y la función evaluada en los puntos, es decir, la suma de los cuadrados de los residuales. Veamos como hacerlo.\\
+
+Digamos que queremos modelar los datos con una función lineal $f(x) = \beta_0 + \beta_1 x$, donde $\beta_0,\beta_1$ son parámetros a determinar. Queremos tomarlos tales que se acerquen lo más posible a los datos. Lo mejor posible es que los interpolen, es decir, $f(x_i) = y_i \quad \forall i$, que podemos ver en forma matricial $Ax=b$ como:
+\[ \begin{bmatrix} 1 & x_1  \\ 1 & x_2  \\ \vdots & \vdots  \\ 1 & x_n \end{bmatrix} \begin{bmatrix} \beta_0 \\ \beta_1 \end{bmatrix} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix}\]
+Sin embargo, esto casi nunca se puede alcanzar, pues tenemos muchísimos más ecuaciones que incógnitas. Aquí entra entonces mínimos cuadrados. Resolvemos las ecuaciones normales $A^T A x = A^T b$ para encontrar el vector $\hat{x} = [\hat{\beta_0},\hat{\beta_1}]^T$ que minimice $||b-Ax||$. Con esto, obtenemos la regresión $f(x) = \hat{\beta_0} + \hat{\beta_1}x$ que más se acerca a los datos dados.\\
+Podemos generalizar esto a funciones más complicadas que una función lineal, siempre y cuando sean \textit{lineales} en los parámetros: $f(x) = \sum_{j=0}^m \beta_j g_j(x) \quad (m<n-1)$, resolviendo el siguiente sistema en mínimos cuadrados:
+\[ \begin{bmatrix}
+    g_0(x_1) & g_1(x_1) & \cdots & g_m(x_1) \\
+    g_0(x_2) & g_1(x_2) & \cdots & g_m(x_2) \\
+    \vdots & \vdots & \vdots & \vdots \\
+    g_0(x_n) & g_1(x_n) & \cdots & g_m(x_n) \\
+\end{bmatrix}\begin{bmatrix}
+    \beta_0 \\
+    \beta_1 \\
+    \vdots \\
+    \beta_m
+\end{bmatrix} = \begin{bmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots
+    y_n
+\end{bmatrix} \]
+Esto permite mucha más libertad que una simple interpolación, pudiendo usar más clases de funciones para aproximar los datos
+\\
+
+\begin{center}
+    \section{Conclusiones} 
+\end{center}
 \begin{itemize}
 \item El m\'etodo de m\'inimos cuadrados es equivalente a proyectar el vector de los datos en el espacio columna de la matriz asociada a nuestro sistema lineal
 
 \item La ecuaci\'on normal es la derivada de la suma de los vectores residuos
 
-\item 
+\item Permite hacer regresiones para acomodar nubes de datos dados a varios tipos de funciones, tratando de minimizar la idstancia total entre los puntos dados y la predicción
     
 \end{itemize}
 
 \section*{Bibliografía}
-
+https://en.wikipedia.org/wiki/Linear\_least\_squares \\
+https://en.wikipedia.org/wiki/Vandermonde\_matrix\\
+Burden
 
 \end{document}
 
