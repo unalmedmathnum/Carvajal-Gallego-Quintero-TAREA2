@@ -1,0 +1,163 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage[mathscr]{euscript}
+\usepackage{amsmath}
+\usepackage[spanish,activeacute]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage[all,cmtip]{xy}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+\usetikzlibrary{arrows}
+\usepackage{amsmath,amssymb,tikz-cd}
+\usepackage{pstricks,pstricks-add,pst-math,pst-xkey}
+%\usepackage{pstricks,pstricks-add}
+\DeclareGraphicsExtensions{.bmp}
+\newtheorem{definicion}{Definición}[section]
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{corolario}{Corolario}[section]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{proposicion}{Proposición}[section]
+\newtheorem{postulado}{Axioma}[section]
+\newtheorem{observacion}{Observación}[section]
+\newtheorem{ejemplo}{Ejemplo}[section]
+%\DeclareTextFontComand{\Large}
+\setlength{\parindent}{0pt}
+\begin{document}
+\begin{titlepage}
+\centering
+{\bfseries\LARGE Universidad Nacional de Colombia \par}
+\vspace{1cm}
+{\scshape\Large Facultad de Ciencias \par}
+\vspace{3cm}
+{\scshape\Huge M\'etdo de los M\'inimos cuadrados\par}
+\vspace{3cm}
+{\itshape\Large Tarea 2 
+A\'alisis N\'umerico\par}
+\vfill
+{\Large Autor: \par}
+{\Large Shara Gallego Grisales \par}
+\vfill
+{\Large Enero 2025 \par}
+\end{titlepage}
+
+\tableofcontents
+\vspace{25.0cm}
+
+\begin{center}
+\section{Introducci\'on}
+\end{center}
+
+\vspace{0.5cm }
+En este documento veremoszs y analisaremos el m\'etodo de m\'inimos cuadrados baho diferentes perspectivas y como 
+\vspace{0.5cm}
+
+
+
+\vspace{21cm}
+
+
+
+
+\section{Teor\'ia}
+\vspace{1.5cm}
+
+
+\subsection{¿Qu\'e es el M\'etodo de M\'inimos Cuadrados?}\vspace{0.5cm} 
+
+Al enfrentarnos al siguiente problema $Ax=b$ donde $A\in\mathbb{R}^{mxn}$ y  conocemos el vector de datos $b$, el m\'etodo de min\'imos cuadrados ofrece una forma de minimizaci\'on del vector residual $r=b-Ax$ minimizando la norma al cuadrado del vector residual $\langle r,r \rangle$.
+
+Esta forma de optimizar el error es atractiva por varias razones una de ellas es que a funci\'on de $||.||^2$ es una funci\'on suave.
+
+Entonces es f\'acil ver que dados los datos este m\'etodo de una manera muy eficaz nos da la "mejor aproximaci\'on" posible para todos los puntos a la cual llamaremos modelo
+\vspace{0.7cm}
+
+%------------------------------------------------------------------------- 
+
+
+\begin{center}
+    \section{Perspectiva Geom\'etrica}
+\end{center}
+\vspace{0.7cm}
+Una manera interesante de ver el m\'etodo de m\'nimos cuadrados es notar que la soluci\'on de este problema se deja ver como como la proyeccci\'on  de $b$ en el espacio columna de $A$.\\
+
+Ahora cuando el sistema $Ax=b$(donde $b$ es el vector dado por los datos) no tiene una soluci\'on exacta es decir que $b\notin col(A)$ y buscamos su mejor aproximaci\'on
+utilizamos el m\'etodo de m\'inimos, cuadrados donde
+minimizaremos el vector residual $r=b-Ax$.\\
+
+Ahora si tomamos el vector $\overline{b}\in col(A)$ como el vector m\'as cercano a $b$ en el subespacio $col(A)$  tendriamos que $\overline{b}$ es una buena aproxicimaci\'on que soluciona nuestro sistema, este vector $\overline{b}$ podemos mostrar que se deja ver como la proyecci\'on  de $b$ en el subespacio $col(A)$  tal que cumple lo siguiente 
+
+\[
+\min_{x \in \text{col}(A)} \| b - x \|
+\]
+
+Note que si $\overline{b}=Ax$ por lo tanto $r=b-\overline{b}$ luego por definicion de la proyecci\'on  se sigue que $r$ es ortogonal a $col(A)$ es decir que $A^\top r=0$ 
+
+asumimos la ortogonalidad de $r$ pues si $r$ no fuera ortogonal a $\overline{b}$ esto significar\'ia que existe una mejor aproximaci\'on en $col(A)$ para $b$ por lo tanto no cumplir\'ia la condici\'on de minimizaci\'on y la proyecci\'on se deducir\'ia  de este hecho.
+
+As\'i tendr\'iamos que $\overline{b}=Ax$, por definici\'on tendr\'iamos que $r=b-\overline{b}$es decir que $b=r+\overline{b}$, si aplicaramos la propiedad del triangulo esto se ver\'ia de la siguiente manera.
+
+
+\vspace{0.5cm}
+
+
+ 
+\vspace{6.5cm}
+ 
+
+
+
+%-------------------------------------------------------------------------
+
+\begin{center}    
+\section{Perspectiva Algebraica}
+\end{center}
+
+ La ecuaci\'on normal del metodo de minimos cuadrados se obtiene de minimizar la suma de los vectores resuiduo al cuadrado.
+
+ Supongamos que $Ax=\overline{b}$ define el modelo para nuestra regresi\'on lineal.
+
+ Ahora nuestro objetivo es minimizar la norma vectores residuo al cuadradola cual llamaremos  $S(x)$ donde
+
+ \begin{align*}
+     S(x)=\langle r,r\rangle\\
+     =(b-\overline{b})alaT(b-\overline{b})\\
+     =(b-Ax)alaT(b-Ax)\\  
+     =b^\top b - b^\top Ax - x^\top A^\top b + x^\top A^\top A x\\
+     =b^\top b - 2 x^\top A^\top b + x^\top A^\top A x
+ \end{align*}
+Ahora minimicemos $S(x)$
+
+\begin{align*}
+    \frac{\partial S(x)}{\partial x} = -2A^\top b + 2A^\top Ax=0\\
+    A^\top Ax = A^\top b
+\end{align*}
+
+Ahora suponiendo que $A^\top A$ es invertible tendr\'iamos que
+
+\begin{equation}
+    x =(A^\top A)^{-1} A^\top b
+\end{equation}
+ 
+A la ecuaci\'on $(1)$ la llamaremos la ecuaci\'on normal del m\'etodo de mi\'imos cuadrados
+
+\begin{center}
+\section{Conclusiones}\end{center}
+\begin{itemize}
+\item El m\'etodo de m\'inimos cuadrados es equivalente a proyectar el vector de los datos en el espacio columna de la matriz asociada a nuestro sistema lineal
+
+\item La ecuaci\'on normal es la derivada de la suma de los vectores residuos
+
+\item 
+    
+\end{itemize}
+
+\section*{Bibliografía}
+
+
+\end{document}
+
