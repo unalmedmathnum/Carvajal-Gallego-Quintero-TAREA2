@@ -41,7 +41,7 @@
 A\'alisis N\'umerico\par}
 \vfill
 {\Large Autor: \par}
-{\Large Shara Gallego Grisales \par}
+{\Large Shara Gallego Grisales, Diego Carvajal \par}
 \vfill
 {\Large Enero 2025 \par}
 \end{titlepage}
@@ -54,7 +54,13 @@ A\'alisis N\'umerico\par}
 \end{center}
 
 \vspace{0.5cm }
-En este documento veremos y analizaremos el m\'etodo de m\'inimos cuadrados bajo diferentes perspectivas y como 
+
+El m\'etodo de m\'inimos cuadrados es una herramienta fundamental en el an\'alisis num\'erico y la estad\'istica, utilizada para encontrar la mejor aproximaci\'on a un conjunto de datos cuando no es posible una soluci\'on exacta. Su aplicación abarca desde la resolución de sistemas sobredeterminados hasta la regresi\'on de datos en ciencia de datos y aprendizaje autom\'atico. \\ 
+
+En este documento, se exploran diversas perspectivas del m\'etodo: su formulaci\'on matem\'atica, su interpretaci\'on geom\'etrica como una proyecci\'on sobre el espacio columna, y su aplicaci\'on en ciencia de datos para realizar regresiones.\\
+
+A trav\'es de estas perspectivas, se busca proporcionar una comprensi\'on integral de este m\'etodo y su relevancia en el an\'alisis de datos y la optimizaci\'on.\\
+ 
 \vspace{0.5cm}
 
 
@@ -103,6 +109,7 @@ Asumimos la ortogonalidad de $r$ pues si $r$ no fuera ortogonal a $\overline{b}$
 
 As\'i tendr\'iamos que $\overline{b}=Ax$, por definici\'on tendr\'iamos que $r=b-\overline{b}$es decir que $b=r+\overline{b}$, si aplicáramos la propiedad del triángulo esto se ver\'ia de la siguiente manera.
 
+\includegraphics[scale=0.5]{foto shara 1.jpeg}
 
 \vspace{0.5cm}
 
@@ -175,6 +182,9 @@ Podemos generalizar esto a funciones más complicadas que una función lineal, s
     y_n
 \end{bmatrix} \]
 Esto permite mucha más libertad que una simple interpolación, pudiendo usar más clases de funciones para aproximar los datos
+
+\includegraphics[scale=0.5]{fotoshara 2.jpeg}
+
 \\
 
 \begin{center}
@@ -189,10 +199,13 @@ Esto permite mucha más libertad que una simple interpolación, pudiendo usar m�
     
 \end{itemize}
 
-\section*{Bibliografía}
-https://en.wikipedia.org/wiki/Linear\_least\_squares \\
-https://en.wikipedia.org/wiki/Vandermonde\_matrix\\
-Burden
+\section{Bibliografía}
+\begin{thebibliography}{9}
+    \bibitem{lec10} D. Bindel, \textit{Lecture 10: Numerical Analysis}, Cornell University, 2012. Disponible en: \url{https://www.cs.cornell.edu/~bindel/class/cs3220-s12/notes/lec10.pdf}.
+    \bibitem{num_analysis} R. L. Burden, J. D. Faires, \textit{Numerical Analysis, 9th Edition}, Cengage Learning, 2010. Disponible en: \url{https://faculty.ksu.edu.sa/sites/default/files/numerical_analysis_9th.pdf}.
+    \bibitem{least_squares} Wikipedia contributors, \textit{Linear Least Squares}, Wikipedia, The Free Encyclopedia. Disponible en: \url{https://en.wikipedia.org/wiki/Linear_least_squares}.
+    \bibitem{vandermonde} Wikipedia contributors, \textit{Vandermonde Matrix}, Wikipedia, The Free Encyclopedia. Disponible en: \url{https://en.wikipedia.org/wiki/Vandermonde_matrix}.
+\end{thebibliography}
 
 \end{document}
 
